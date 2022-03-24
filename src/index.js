@@ -7,9 +7,12 @@ defineLoggers();
 const processArguments = process.argv.slice(2, process.argv.length);
 
 if (processArguments.length) {
-  Object.values(TEST_TYPES).forEach((type) => {
-    if (processArguments.includes(type)) {
-      runSingleTest(type);
+  processArguments.forEach((arg) => {
+    const testType = Object.values(TEST_TYPES).find((type) =>
+      arg.match(new RegExp(`^${type}s?$`, "i"))
+    );
+    if (testType) {
+      runSingleTest(testType);
     }
   });
 } else {
