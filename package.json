@@ -4,12 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "precommit": "lint-staged",
+    "start": "nodemon ./src/index.js",
+    "prepare": "husky install",
+    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"src/**/*.js\""
   },
+  "lint-staged": {
+    "src/**/*.js": [ 
+    "prettier --single-quote --use-tabs --trailing-comma es5 --write",  
+    "git add"
+   ]
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.0"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "validate-branch-name": "^1.3.0"
+  },
+  "validate-branch-name": {
+    "pattern": "^(master|main|development){1}$|^(feature|bugfix|config|refactor)/.+$",
+    "errorMsg": "your own error message"
   }
 }
