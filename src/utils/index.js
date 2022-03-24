@@ -23,15 +23,23 @@ const timeWrapper = (title, func, func2, label, label2) => {
 
 const defineLoggers = () => {
   console.info = (message) => {
-    console.log("\x1b[36m%s\x1b[0m", message);
+    console.log("\x1b[36m%s\x1b[0m", message); // blue
   };
 
   console.title = (message) => {
-    console.log("\x1b[35m%s\x1b[0m", message);
+    console.log("\x1b[35m%s\x1b[0m", message); // violet
   };
 
   console.result = (title, result) => {
-    console.log(title + "\x1b[32m%s\x1b[0m", result);
+    console.log(title + "\x1b[32m%s\x1b[0m", result); // green
+  };
+
+  console.error = (message) => {
+    console.log("\x1b[31m%s\x1b[0m", `ERROR: ${message}`); // red
+  };
+
+  console.warning = (message) => {
+    console.log("\x1b[33m%s\x1b[0m", `WARNING: ${message}`); // yellow
   };
 };
 
