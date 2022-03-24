@@ -13,6 +13,8 @@ if (processArguments.length) {
     );
     if (testType) {
       runSingleTest(testType);
+    } else {
+      console.warning(`${arg} is not allowed test type`);
     }
   });
 } else {
