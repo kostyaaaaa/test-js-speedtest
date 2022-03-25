@@ -14,7 +14,25 @@ const runSingleTest = (type) => {
   }
 };
 
+const runTests = (processArguments) => {
+  if (processArguments.length) {
+    processArguments.forEach((arg) => {
+      const testType = Object.values(TEST_TYPES).find((type) =>
+        arg.match(new RegExp(`^${type}s?$`, "i"))
+      );
+      if (testType) {
+        runSingleTest(testType);
+      } else {
+        console.warning(`${arg} is not allowed test type`);
+      }
+    });
+  } else {
+    runAllTests();
+  }
+};
+
 module.exports = {
   runAllTests,
   runSingleTest,
+  runTests,
 };

@@ -1,22 +1,28 @@
 const { defineLoggers } = require("./utils");
-const { TEST_TYPES } = require("./constants");
-const { runAllTests, runSingleTest } = require("./tests");
+const { runTests } = require("./tests");
 
-defineLoggers();
+class App {
+  constructor(processArguments) {
+    this.processArguments = processArguments;
+  }
+
+  applyProcessOptions = () => {
+    return this;
+  };
+
+  defineLoggers = () => {
+    defineLoggers();
+    return this;
+  };
+
+  runTests = () => {
+    runTests(this.processArguments);
+    return this;
+  };
+}
 
 const processArguments = process.argv.slice(2, process.argv.length);
 
-if (processArguments.length) {
-  processArguments.forEach((arg) => {
-    const testType = Object.values(TEST_TYPES).find((type) =>
-      arg.match(new RegExp(`^${type}s?$`, "i"))
-    );
-    if (testType) {
-      runSingleTest(testType);
-    } else {
-      console.warning(`${arg} is not allowed test type`);
-    }
-  });
-} else {
-  runAllTests();
-}
+const app = new App(processArguments);
+
+app.applyProcessOptions().defineLoggers().runTests();
