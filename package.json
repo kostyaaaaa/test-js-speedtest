@@ -6,14 +6,8 @@
   "scripts": {
     "precommit": "lint-staged",
     "start": "nodemon ./src/index.js",
-    "prepare": "husky install",
-    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"src/**/*.js\""
+    "prepare": "husky install"
   },
-  "lint-staged": {
-    "src/**/*.js": [ 
-    "prettier --single-quote --use-tabs --trailing-comma es5 --write"
-   ]
-},
   "keywords": [],
   "author": "",
   "license": "ISC",
