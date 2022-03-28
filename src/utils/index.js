@@ -43,7 +43,21 @@ const defineLoggers = () => {
   };
 };
 
+const makeConclusion = (results) => {
+  const [key1, key2] = Object.keys(results);
+  const sum = results[key1] + results[key2];
+
+  console.info(
+    `\n${key1} is faster in ${((results[key1] / sum) * 100).toFixed(
+      2
+    )}% of tests, ${key2} is faster in ${((results[key2] / sum) * 100).toFixed(
+      2
+    )}% of tests\n`
+  );
+};
+
 module.exports = {
   timeWrapper,
   defineLoggers,
+  makeConclusion,
 };

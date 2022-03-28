@@ -1,4 +1,4 @@
-const createTestArrays = () => {
+const createMockedArraysData = () => {
   const stringSmallArray = [];
   const stringMediumArray = [];
   const stringBigArray = [];
@@ -34,5 +34,5 @@ const createTestArrays = () => {
 };
 
 module.exports = {
-  createTestArrays,
+  createMockedArraysData,
 };
