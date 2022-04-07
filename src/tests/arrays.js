@@ -322,7 +322,7 @@ const arrayTestsList = {
 };
 
 const runArrayTests = () => {
-  console.title("START ARRAYS TEST");
+  console.title("START ARRAYS TESTS");
   Object.keys(arrayTestsList).forEach((testTitle) => {
     console.title(`${testTitle} \n`);
     const arraysList = createMockedArraysData();
